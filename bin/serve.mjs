@@ -76,7 +76,7 @@ await $`find ${path.join(kTEMP_DIR, repo.uri)} -name '*.svg' -exec cp '{}' './se
  *
  * Basically identical to the rest of the acknowledgements pages of advtr
  * */
-await $`./node_modules/.bin/ejs ./src/templates/index.html.ejs version=${pkg.version} -f ./src/templates/acknowledgements.json -o ./serve/index.html`
+await $`npx ejs ./src/templates/index.html.ejs version=${pkg.version} -f ./src/templates/acknowledgements.json -o ./serve/index.html`
 
 // Make it spicy
 await $`cp ./index.css ./serve/index.css`
