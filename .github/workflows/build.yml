@@ -40,5 +40,5 @@ on:
       - cronjob
   schedule:
     - cron:  '0 2 * * *'
-    branches:
-      - master
+      branches:
+        - master
