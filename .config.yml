@@ -41,4 +41,4 @@ localisation:
 
 meta:
   src: 'http://download.geonames.org/export/dump/{uri}'
-  git: 'git@github.com:{uri}.git'
+  git: 'https://github.com/{uri}.git'
