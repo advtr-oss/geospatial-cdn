@@ -50,13 +50,23 @@ const kTEMP_DIR = config.meta.tmp || `${os.tmpdir()}/co.uk.advtr.cdn.place/`
  * */
 
 try {
-  await $`rm -Rf ./serve`
+  await $`rm -rf ./serve`
+  await $`rm -rf ${kTEMP_DIR}`
 } catch (e) {
-  console.log(e)
+  console.log(e.stderr)
 }
 
 // Download
-await $`node ./src/download.js`
+try {
+  await $`node ./src/download.js`
+} catch (e) {
+  console.log(e.stderr)
+
+  // Delete this on a crash, no need for it
+  if (!debug) await $`rm -rf ${kTEMP_DIR}`
+
+  process.exit(e.stderr || 1)
+}
 
 // Process
 await $`node ./src/ingest.js --output ./serve`
