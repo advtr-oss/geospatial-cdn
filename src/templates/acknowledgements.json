@@ -1,0 +1,18 @@
+{
+  "acknowledgements": {
+    "mledoze/countries": {
+      "url": {
+        "title": "git@github.com:mledoze/countries.git",
+        "uri": "https://github.com/mledoze/countries"
+      },
+      "description": "World countries in JSON, CSV, XML and Yaml. Including GeoJSON and flags in SVG's"
+    },
+    "geonames": {
+      "url": {
+        "title": "https://www.geonames.org",
+        "uri": "https://www.geonames.org"
+      },
+      "description": "The GeoNames geographical database covers all countries and contains over eleven million placenames that are available for download free of charge."
+    }
+  }
+}

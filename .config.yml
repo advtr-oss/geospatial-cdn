@@ -1,0 +1,44 @@
+version: 0.1
+
+#
+# source.{target}
+#   - uri: The url to be substituted into the meta.{source} value
+#   - type: (zip|file) if it's a zip we should unzip during the pipe, file will be left
+#   - file: This is only used by zip so we can access the file inside the zip folder
+#   - src: This is to set the meta.{source} value, defaults to just `meta.src`
+#
+sources:
+  cities:
+    - uri: cities1000.zip
+      type: zip
+      file: cities1000/cities1000.txt
+  alternatives:
+    - uri: alternateNamesV2.zip
+      type: zip
+      file: alternateNamesV2/alternateNamesV2.txt
+  languages:
+    - uri: iso-languagecodes.txt
+      type: file
+  admin:
+    - uri: admin2Codes.txt
+      type: file
+    - uri: admin1CodesASCII.txt
+      type: file
+  countries:
+    - uri: countryInfo.txt
+      type: file
+    - uri: mledoze/countries
+      file: countries.json
+      branch: master
+      type: git
+      src: git
+
+localisation:
+  - en
+  - fr
+  - de
+  - es
+
+meta:
+  src: 'http://download.geonames.org/export/dump/{uri}'
+  git: 'git@github.com:{uri}.git'

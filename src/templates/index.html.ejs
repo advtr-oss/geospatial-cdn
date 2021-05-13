@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <link href="index.css" rel="stylesheet" />
+</head>
+<body>
+<div class="acknowledgements container-lg">
+    <div class="header">
+        <div class="meta">
+            <h1>Advtr Geospatial CDN v<%- version %></h1>
+            <span>Last built @ <%- new Date().toUTCString() %> </span>
+        </div>
+        <div class='home'>
+            <a href="https://advtr.co.uk/" rel="noreferrer">
+                <button class='bck-btn' type="button">Help I'm Lost</button>
+            </a>
+        </div>
+    </div>
+    <div class="codeblock">
+        <% Object.keys(acknowledgements).forEach((key, idx) => {
+          const ack = acknowledgements[key] %>
+        <div>
+            <h3><%- key %> @ <a href="<%- ack.url.uri %>" rel="noreferrer"><%- ack.url.title %></a></h3>
+            <span class="description"><%- ack.description %></span>
+            <% if (idx !== Object.keys(acknowledgements).length - 1) { %>
+                <div class='separator'>---------------------------------------------------</div>
+            <% } %>
+        </div>
+        <% }) %>
+    </div>
+</div>
+</body>
+</html>
