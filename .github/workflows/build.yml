@@ -24,7 +24,7 @@ jobs:
         run: |
           npx zx ./bin/serve.mjs
       - name: Deploy to Pages
-#        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
