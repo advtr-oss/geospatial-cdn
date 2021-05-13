@@ -108,6 +108,6 @@ async function main () {
 main().then(() => {
   console.log('@advtr/place-cdn.download finished')
 }).catch((err) => {
-  console.error(err.message)
+  console.error(err)
   process.exit(typeof err.code === 'number' ? err.code : 1)
 })
