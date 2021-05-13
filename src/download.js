@@ -41,6 +41,8 @@ function Process (url, type, file, repo) {
   this.repo = repo
 }
 
+process.on('log', console.log)
+
 async function main () {
   console.log('@advtr/place-cdn.download starting')
 
@@ -87,7 +89,7 @@ async function main () {
         break
       }
       case 'git': {
-        await git.clone(job.url, 'master', path.join(config.tmp, job.repo))
+        await git.clone(job.url, 'HEAD', path.join(config.tmp, job.repo))
         jobTask = task(`=> cloning ${job.url}`)
         break
       }
