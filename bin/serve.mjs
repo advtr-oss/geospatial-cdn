@@ -91,6 +91,8 @@ await $`npx ejs ./src/templates/index.html.ejs version=${pkg.version} -f ./src/t
 // Make it spicy
 await $`cp ./index.css ./serve/index.css`
 
+await $`cp ./src/templates/404.html ./serve/404.html`
+
 if (!debug) {
   $`rm -Rf ${kTEMP_DIR}`
 } else {
