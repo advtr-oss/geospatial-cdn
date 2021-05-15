@@ -50,8 +50,8 @@ const kTEMP_DIR = config.meta.tmp || `${os.tmpdir()}/co.uk.advtr.cdn.place/`
  * */
 
 try {
-  await $`rm -rf ./serve`
-  await $`rm -rf ${kTEMP_DIR}`
+  await $`rm -Rf ./serve`
+  await $`rm -Rf ${kTEMP_DIR}`
 } catch (e) {
   console.log(e.stderr)
 }
