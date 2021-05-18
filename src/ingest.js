@@ -1,6 +1,7 @@
+/* global geonames, locales */
+
 const fs = require('fs')
 const path = require('path')
-const util = require('util')
 
 const etl = require('etl')
 const YAML = require('yaml')
@@ -9,7 +10,7 @@ const minimist = require('minimist')
 const task = require('./helpers/task')
 const Config = require('./config')
 
-const { citySchema, adminSchema, countrySchema, languageSchema, alternativeSchema  } = require('./helpers/geoname-schemas')
+const { citySchema, adminSchema, countrySchema, languageSchema, alternativeSchema } = require('./helpers/geoname-schemas')
 
 const BASE_NAME_LANGUAGE = 'en'
 
@@ -85,7 +86,7 @@ const stream = (ctx, schema) =>
  * @param {Schema} schema
  * @param {number} collect
  * */
-const steamWithCollect = (ctx, schema, collect= 1000) =>
+const steamWithCollect = (ctx, schema, collect = 1000) =>
   fs.createReadStream(ctx.download)
     .pipe(etl.csv({ headers: schema.headers, separator: '\t', skipComments: true }))
     .pipe(etl.map(schema.map))
@@ -111,7 +112,6 @@ global.locales = new Set([])
  *                 GENERATE DATA FUNCTIONS                  *
  *                                                          *
  ************************************************************/
-
 
 /************************************************************
  *                                                          *
@@ -181,7 +181,7 @@ const streamRegion = (ctx, collection) =>
   steamWithCollect(ctx, adminSchema, collection)
 
 const handleRegions = async (ctx, config) => {
-  let [admin2, admin1] = await Promise.all(
+  const [admin2, admin1] = await Promise.all(
     config.sources.admin.map((source) => streamRegion(createStreamContext(ctx, source.file), source.file === 'admin2Codes.txt' ? 5000 : 1000))
   )
 
@@ -243,13 +243,13 @@ const handleThe80s = async (ctx, config) => {
   const rawLanguages = await streamLanguages(createStreamContext(ctx, config.sources.languages.pop().file))
 
   // This guarantees the languages passed here are valid
-  const languages = rawLanguages.filter(el =>  config.localisation.includes(el['iso_639-1']))
+  const languages = rawLanguages.filter(el => config.localisation.includes(el['iso_639-1']))
   languages.map((el) => el['iso_639-1']).forEach((el) => locales.add(el))
 
   await mkdir(path.join(ctx.output, './localisation'))
 
   // Hold this file so the ingest can use it to figure out the routing
-  await fs.promises.writeFile(path.join(ctx.output, './localisation', `locale.json`), JSON.stringify(languages, '', 2))
+  await fs.promises.writeFile(path.join(ctx.output, './localisation', 'locale.json'), JSON.stringify(languages, '', 2))
 
   const alts = {}
   locales.forEach((el) => {

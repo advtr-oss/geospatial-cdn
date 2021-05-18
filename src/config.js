@@ -21,5 +21,4 @@ function Config (yml) {
   this.localisation = yml.localisation || []
 }
 
-
 module.exports = Config

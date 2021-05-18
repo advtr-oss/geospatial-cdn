@@ -64,7 +64,7 @@ async function main () {
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i]
 
-    let jobTask;
+    let jobTask
     switch (job.type) {
       case 'file': {
         jobTask = task(`=>  fetching ${job.url}`)

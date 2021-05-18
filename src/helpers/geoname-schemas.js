@@ -1,6 +1,6 @@
 'use strict'
 
-const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
+/* global geonames, locales */
 
 /**
  * The data for transformation, i.e what is removed from the original geonames tsv and converted to ours
@@ -66,7 +66,7 @@ const citySchema = new Schema(
     'lastUpdated'
   ], (el) => {
     // Would be better if we could remove this line crap
-    const data = clean(el);
+    const data = clean(el)
     delete data.__line
 
     geonames.add(el.id)
@@ -77,7 +77,6 @@ const citySchema = new Schema(
     })
   }
 )
-
 
 const alternativeSchema = new Schema(
   [
@@ -100,7 +99,6 @@ const alternativeSchema = new Schema(
   }
 )
 
-
 const languageSchema = new Schema(
   [
     'iso_639-3',
@@ -113,7 +111,6 @@ const languageSchema = new Schema(
   })
 )
 
-
 const adminSchema = new Schema(
   [
     'code',
@@ -122,7 +119,7 @@ const adminSchema = new Schema(
     'id'
   ], (el) => {
     // Would be better if we could remove this line crap
-    const data = clean(el);
+    const data = clean(el)
     delete data.__line
 
     const components = el.code.split('.')
@@ -145,7 +142,7 @@ module.exports = {
   adminSchema,
   countrySchema,
   languageSchema,
-  alternativeSchema,
+  alternativeSchema
 }
 
 function clean (obj) {
