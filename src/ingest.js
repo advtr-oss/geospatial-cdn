@@ -151,11 +151,9 @@ const handleCountries = async (ctx, config) => {
       return {
         placeid: country.id,
         name: country.name,
-        geometry: {
-          location: {
-            type: 'Point',
-            coordinates:  mledozeCountry.latlng.reverse()
-          }
+        location: {
+          lat: mledozeCountry.latlng[0],
+          lng: mledozeCountry.latlng[1]
         },
         continent: country.continent,
         codes: {
