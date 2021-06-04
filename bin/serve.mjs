@@ -65,7 +65,7 @@ try {
   // Delete this on a crash, no need for it
   if (!debug) await $`rm -rf ${kTEMP_DIR}`
 
-  process.exit(e.stderr || 1)
+  process.exit(e.exitCode || 1)
 }
 
 // Process
