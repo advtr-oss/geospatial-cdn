@@ -1,0 +1,26 @@
+[
+  {
+    "iso_639-3": "deu",
+    "iso_639-2": "deu / ger* ",
+    "iso_639-1": "de",
+    "language": "German"
+  },
+  {
+    "iso_639-3": "eng",
+    "iso_639-2": "eng",
+    "iso_639-1": "en",
+    "language": "English"
+  },
+  {
+    "iso_639-3": "fra",
+    "iso_639-2": "fra / fre* ",
+    "iso_639-1": "fr",
+    "language": "French"
+  },
+  {
+    "iso_639-3": "spa",
+    "iso_639-2": "spa",
+    "iso_639-1": "es",
+    "language": "Spanish"
+  }
+]
