@@ -10,6 +10,8 @@ const minimist = require('minimist')
 const task = require('./helpers/task')
 const Config = require('./config')
 
+const { readFile, mkdir } = require('./helpers/fs')
+
 const { citySchema, adminSchema, countrySchema, languageSchema, alternativeSchema } = require('./helpers/geoname-schemas')
 
 const BASE_NAME_LANGUAGE = 'en'
@@ -33,19 +35,7 @@ process.on('exit', code => {
 })
 
 /**
- * Read file
- * */
-const readFile = (file) => fs.promises.readFile(file, 'utf-8')
-
-/**
- * Create a dir if it doesn't already exist
- * */
-const mkdir = (dir, options = { recursive: true }) =>
-  fs.promises.access(dir, fs.constants.R_OK | fs.constants.W_OK)
-    .catch(() => fs.promises.mkdir(dir, options))
-
-/**
- * Parse any data with a object that has `.parse` method
+ * Parse any data with an object that has `.parse` method
  * */
 const parse = (type) => (data) => type.parse(data)
 

@@ -16,11 +16,7 @@ const requestAsync = promisify(request)
 const task = require('./helpers/task')
 const Config = require('./config')
 
-const readFile = (file) => fs.promises.readFile(file, 'utf-8')
-
-const mkdir = (dir, options = { recursive: true }) =>
-  fs.promises.access(dir, fs.constants.R_OK | fs.constants.W_OK)
-    .catch(() => fs.promises.mkdir(dir, options))
+const { readFile, mkdir } = require('./helpers/fs')
 
 const parse = (type) => (data) => type.parse(data)
 
