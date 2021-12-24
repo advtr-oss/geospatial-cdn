@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@npmcli/git": "^2.1.0",
-    "chalk": "^5.0.0",
+    "chalk": "4.1.2",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
     "ejs": "^3.1.6",
