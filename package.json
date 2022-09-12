@@ -10,20 +10,20 @@
   "author": "Harry T Wright",
   "license": "ISC",
   "dependencies": {
-    "@npmcli/git": "^2.1.0",
+    "@npmcli/git": "^3.0.2",
     "chalk": "4.1.2",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
-    "ejs": "^3.1.6",
-    "etl": "^0.6.12",
+    "ejs": "^3.1.8",
+    "etl": "0.7.0",
     "is-ci": "^3.0.1",
-    "mapshaper": "^0.5.82",
+    "mapshaper": "^0.6.7",
     "minimist": "^1.2.5",
     "request": "^2.88.2",
     "unzipper": "^0.10.11",
-    "yaml": "^1.10.2"
+    "yaml": "^2.1.1"
   },
   "devDependencies": {
-    "zx": "^4.2.0"
+    "zx": "7.0.7"
   }
 }
