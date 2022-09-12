@@ -8,7 +8,7 @@ jobs:
         run: echo "ImageVersion=$ImageVersion" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - name: Check if Git tag exists
-        run: echo "::set-env name=HEAD_TAG::$(git tag --points-at HEAD)"
+        run: echo "HEAD_TAG=$(git tag --points-at HEAD)" >> $GITHUB_ENV
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
