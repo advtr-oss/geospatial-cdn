@@ -233,10 +233,12 @@ const handleThe80s = async (ctx, config) => {
   const rawLanguages = await streamLanguages(createStreamContext(ctx, config.sources.languages.pop().file))
 
   // This guarantees the languages passed here are valid
+  locales.add('wkdt'); locales.add('link'); locales.add('abbr')
   const languages = rawLanguages.filter(el => config.localisation.includes(el['iso_639-1']))
   languages.map((el) => el['iso_639-1']).forEach((el) => locales.add(el))
 
   await mkdir(path.join(ctx.output, './localisation'))
+  await mkdir(path.join(ctx.output, './alternatives'))
 
   // Hold this file so the ingest can use it to figure out the routing
   await fs.promises.writeFile(path.join(ctx.output, './localisation', 'locale.json'), JSON.stringify(languages, '', 2))
@@ -251,9 +253,17 @@ const handleThe80s = async (ctx, config) => {
     return {}
   })
 
+  const createPath = (key) => {
+    switch (key) {
+      case 'wkdt': case 'link': case 'abbr':
+        return path.join(ctx.output, './alternatives', `${key}.json`)
+      default: return path.join(ctx.output, './localisation', `${key}.json`)
+    }
+  }
+
   const keys = Object.keys(alts)
   for (let i = 0; i < keys.length; i++) {
-    await fs.promises.writeFile(path.join(ctx.output, './localisation', `${keys[i]}.json`), JSON.stringify(alts[keys[i]], '', 0))
+    await fs.promises.writeFile(createPath(keys[i]), JSON.stringify(alts[keys[i]], '', 0))
   }
 }
 

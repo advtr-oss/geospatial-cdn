@@ -78,10 +78,12 @@ const citySchema = new Schema(
   }
 )
 
+const isWikipedia = (name) => /wiki/gi.test(name)
+
 const alternativeSchema = new Schema(
   [
     'id',
-    'city',
+    'placeid',
     'iso',
     'name',
     'preferred',
@@ -91,7 +93,7 @@ const alternativeSchema = new Schema(
     'from',
     'to'
   ], (el) => {
-    if (!el.city || !geonames.has(el.city) || !locales.has(el.iso)) return {}
+    if (!el.placeid || !geonames.has(el.placeid) || !locales.has(el.iso) || isWikipedia(el.name)) return {}
     return {
       ...clean(el),
       __line: undefined
