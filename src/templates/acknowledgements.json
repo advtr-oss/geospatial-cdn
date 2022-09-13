@@ -14,5 +14,12 @@
       },
       "description": "The GeoNames geographical database covers all countries and contains over eleven million placenames that are available for download free of charge."
     }
+  },
+  "mattbrailsford/css-sitemap": {
+    "url": {
+      "title": "git@github.com:mattbrailsford/css-sitemap.git",
+      "uri": "https://github.com/mattbrailsford/css-sitemap"
+    },
+    "description": "CSS stylesheet for generating a visual sitemap"
   }
 }

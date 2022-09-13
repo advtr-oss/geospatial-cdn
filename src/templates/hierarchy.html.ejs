@@ -1,0 +1,14 @@
+<li>
+    <a href="<%- dest%>/<%- hierarchy.name %>"><%- hierarchy.name %></a>
+<% if (hierarchy.__dir) { %>
+        <ul>
+            <%
+            Object.keys(hierarchy.contents).forEach((key) => {
+                const dir = hierarchy.contents[key]
+                const path = `${dest}/${hierarchy.name}`
+            %>
+            <%- include('hierarchy.html.ejs', { hierarchy: dir, dest: path }); %>
+            <% }) %>
+        </ul>
+<% } %>
+</li>

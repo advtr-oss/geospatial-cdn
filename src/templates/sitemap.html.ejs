@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title>Advtr Geospatial CDN v<%- version %> | sitemap <%- dest %></title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="https://use.fontawesome.com/4459dc85b0.js"></script>
+</head>
+<body>
+<div class="sitemap">
+    <h1><%- dest %></h1>
+    <h2>Advtr Geospatial CDN v<%- version %></h2>
+    <nav class="primary">
+        <ul>
+            <li id="home">
+                <a href="https://cdn.advtr.co.uk"><i class="fa fa-home"></i>Home</a>
+                <ul>
+                    <%
+                    Object.keys(hierarchy).forEach((key) => {
+                      const dir = hierarchy[key]
+                    %>
+                    <%- include('hierarchy.html.ejs', { hierarchy: dir, dest }); %>
+                    <% }) %>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

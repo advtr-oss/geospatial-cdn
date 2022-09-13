@@ -92,7 +92,6 @@ async function main () {
     }
 
     jobTask && jobTask()
-    process.stdout.write('\n')
   }
 
   return jobs
