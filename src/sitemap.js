@@ -57,6 +57,7 @@ const main = async (args = process.argv.slice(2)) => {
     glob: glob.hasMagic(cli.glob || '') ? cli.glob : '**/*.json'
   }
 
+  console.log('Creating sitemap for ' + ctx.base)
   const loadTemplate = task('Load template')
   const pkg = require('../package.json')
   const tmplFile = path.join(__dirname, './templates/sitemap.html.ejs')

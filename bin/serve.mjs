@@ -81,8 +81,8 @@ await $`node ./src/mapshaper ${path.join(repoPath, './data/*.geo.json')} -clean 
 await $`mkdir -p ./serve/static/flags/`
 await $`find ${path.join(kTEMP_DIR, repo.uri)} -name '*.svg' -exec cp '{}' './serve/static/flags' ';'`
 
-await $`node ./src/sitemap ./serve/data`
-await $`node ./src/sitemap ./serve/static --glob '**/*.+(json|svg)'`
+// Add sitemaps
+await $`find ./serve -type d -print -exec node ./src/sitemap.js --glob '**/*.+(json|svg)' '{}' ';'`
 
 /**
  * Create the static page
